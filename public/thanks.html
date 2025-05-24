@@ -18,17 +18,19 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
-      text-align: center;
+      flex-direction: column;
     }
 
+    
     .thanks-wrapper {
+  flex: 1; /* ← これでfooterを一番下に押し下げる */
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
+  text-align: center;
+flex-direction: column;
+    }
 
     .container {
       background-color: #fff;
@@ -67,6 +69,13 @@
         color:chocolate;
     }
 
+    footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #fff;
+  color: #888;
+}
+
   </style>
 </head>
 <body>
@@ -104,15 +113,16 @@
     </header>
 
     <div class="thanks-wrapper">
-    <h1>お問い合わせありがとうございました！</h1>
+    <h1>お問い合わせありがとうございました！</h1><br>
     <p>
       内容を確認の上、ご連絡いたします。<br>
       トップページへは下のリンクからどうぞ。
     </p>
     <a href="/index.html">トップに戻る</a>
     </div>
+    <footer>
+      <small>(C)2025 SiegSports</small>
+      </footer>
 </body>
 <footer>
-    <small>(C)2025 SiegSports</small>
-    </footer>
 </html>
