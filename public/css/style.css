@@ -465,6 +465,13 @@ header {
     justify-content: center;
     gap: 40px;
   }
+
+  .more-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
   
   .member-card {
     position: relative;
@@ -544,6 +551,14 @@ header {
     scroll-margin-top: 100px; /* ← headerの高さ分 */
   }
 
+  /* デフォルトは非表示（PC） */
+.tap-overlay {
+  display: none;
+}
+
+
+
+
 
   @media (max-width: 768px) {
     .member-card {
@@ -562,6 +577,19 @@ header {
       font-size: 14px;
     }
     
+    .tap-overlay {
+      display: block;
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      pointer-events: none;
+    }
+  
   }
   
 
@@ -946,10 +974,61 @@ footer {
   color: #777;
 }
 
+.news-detail {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  font-family: 'Helvetica Neue', sans-serif;
+}
 
+.news-detail .section-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: #333;
+}
 
+.news-detail .news-date {
+  text-align: center;
+  color: #888;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
 
+.news-detail .news-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  padding: 0 1rem;
+}
 
+.news-detail a {
+  display: inline-block;
+  margin-top: 2rem;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.news-detail a:hover {
+  background-color: #f0f0f0;
+}
+
+.pb {
+  color: red;
+  font-weight: bold;
+}
+
+.name {
+  font-weight: bold;
+}
 
 
 
