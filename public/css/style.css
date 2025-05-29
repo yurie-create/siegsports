@@ -562,35 +562,21 @@ header {
 
   @media (max-width: 768px) {
     .member-card {
-      width: 180px;
-      height:auto;
+      width: 100%; /* ← スマホでは幅いっぱいで自動調整 */
+      max-width: 180px; /* ← 最大幅だけ指定する */
+      height: 240px;
     }
-    .member-info p {
-      font-size: 12px;
-      line-height: 1.5;
-      word-break: break-word; /* ← 長い単語でも折り返す */
-      margin: 0;
-    }
-
-    .member-info h3 {
-      margin: 0 0 10px;
-      font-size: 14px;
-    }
+   
     
-    .tap-overlay {
-      display: block;
-      position: absolute;
-      bottom: 8px;
-      right: 8px;
-      background: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      font-size: 0.75rem;
-      padding: 4px 8px;
-      border-radius: 6px;
-      pointer-events: none;
+    .member-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   
   }
+  
+  
   
 
 
