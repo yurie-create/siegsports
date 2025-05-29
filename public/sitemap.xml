@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://sieg-sports.com/index.html</loc>
+    <lastmod>2025-05-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://sieg-sports.com/news-detail.html</loc>
+    <lastmod>2025-05-28</lastmod>
+  </url>
+
+  <!-- 必要に応じてページを追加 -->
+
+  <url>
+    <loc>https://sieg-sports.com/thanks.html</loc>
+    <lastmod>2025-05-28</lastmod>
+  </url>
+</urlset>
