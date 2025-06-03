@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title><%= news.title %> | NEWS詳細</title>
+  <link rel="stylesheet" href="/css/style.css"> <!-- ← CSSパスは環境に応じて -->
+</head>
+<body>
+  <div class="news-detail">
+    <h1 class="section-title"><%= news.title %></h1>
+    <div class="news-date"><%= news.date %></div>
+    <div class="news-text"><%- news.content.replace(/\n/g, '<br>') %></div>
+    <a href="/">← トップページに戻る</a>
+  </div>
+</body>
+</html>
+

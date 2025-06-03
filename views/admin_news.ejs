@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>NEWS管理画面</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>NEWS投稿フォーム</h1>
+  <form action="/admin/news" method="POST">
+    <label>日付（空なら今日）</label>
+    <input type="date" name="date">
+
+    <label>タイトル</label>
+    <input type="text" name="title" required>
+
+    <label>本文</label>
+    <textarea name="content" rows="6" required></textarea>
+
+    <button type="submit">投稿する</button>
+  </form>
+  <p><a href="/admin/news/list">← ニュース一覧ページへ戻る</a></p>
+</body>
+</html>

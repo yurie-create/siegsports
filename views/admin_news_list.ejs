@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>NEWS一覧</title>
+</head>
+<body>
+  <h1>NEWS一覧</h1>
+  <ul>
+    <% newsList.forEach(news => { %>
+      <li>
+        <strong><%= news.date %></strong> - <%= news.title %>
+        [<a href="/admin/news/edit/<%= news.id %>">編集</a>]
+        [<a href="/admin/news/delete/<%= news.id %>" onclick="return confirm('削除しますか？')">削除</a>]
+      </li>
+    <% }) %>
+  </ul>
+  <p><a href="/admin/news"> 投稿ページへ</a></p>
+  <p>
+    <a href="/admin/logout" class="logout-button">ログアウト</a>
+  </p>
+  <p><a href="/">← HPへ戻る</a></p>
+
+</body>
+</html>

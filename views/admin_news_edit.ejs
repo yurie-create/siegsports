@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>NEWS編集</title>
+</head>
+<body>
+  <h1>NEWS編集</h1>
+  <form method="POST" action="/admin/news/edit/<%= news.id %>">
+    <label>日付</label><br>
+    <input type="date" name="date" value="<%= news.date %>"><br><br>
+
+    <label>タイトル</label><br>
+    <input type="text" name="title" value="<%= news.title %>" required><br><br>
+
+    <label>内容</label><br>
+    <textarea name="content" rows="5" required><%= news.content %></textarea><br><br>
+
+    <button type="submit">更新</button>
+  </form>
+  <p><a href="/admin/news/list">← 一覧へ戻る</a></p>
+</body>
+</html>
