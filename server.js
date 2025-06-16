@@ -21,7 +21,7 @@ const { requireAdmin } = require('./middleware/auth');
 
 
 app.use(session({
-  secret:  process.env.SESSION_SECRET,
+  secret:  process.env.SESSION_SECRET|| 'fallback_default_secret',
   resave: false,
   saveUninitialized: false
 }));
