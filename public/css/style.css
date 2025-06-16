@@ -659,7 +659,7 @@ header {
   }
   
   #news {
-      scroll-margin-top: 100px;
+      scroll-margin-top: 110px;
   }
  
   @media (max-width: 768px) {
@@ -769,11 +769,7 @@ header {
     color: #333; /* これを足すとベージュ回避できる！ */
   }
   
-  .section-title {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-    font-family: 'Bebas Neue', sans-serif;
-  }
+  
   
   .section-subtitle {
     font-size: 1.5rem;
@@ -840,11 +836,6 @@ header {
   background-color: #f8f8f8;
 }
 
-.section-title {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 40px;
-}
 
 /* フォーム全体 */
 .contact-wrapper {
@@ -1028,5 +1019,82 @@ footer {
   font-weight: bold;
 }
 
+.blog-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+}
 
+.blog-cards {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.blog-card {
+  width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-thumb {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-info {
+  padding: 1rem;
+}
+
+.blog-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.blog-date {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.blog-more {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.blog-more .btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #444;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.blog-more .btn:hover {
+  background-color: #666;
+}
+
+.section-description {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #555;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+#blog {
+  scroll-margin-top: 110px; /* ← headerの高さ分 */
+}
 

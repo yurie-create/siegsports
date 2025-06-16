@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>SiegSportsブログ一覧</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      background-color: #f4f4f4;
+      margin: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .blog-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);  /* ← 3列固定に */
+      gap: 2rem;
+}
+
+
+@media (max-width: 1024px) {
+  .blog-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+    .blog-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      transition: transform 0.2s ease;
+      display: flex;
+     flex-direction: column;
+      justify-content: space-between;
+      
+    }
+
+    .blog-card img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+
+    .blog-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .blog-card h3 {
+      margin-top: 0;
+      color: #0073aa;
+    }
+
+    .blog-card p {
+      color: #555;
+    }
+
+    .blog-card a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .blog-date {
+      font-size: 0.9rem;
+      color: #999;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: #0073aa;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* デフォルトは4列（PC） */
+  gap: 1rem;
+  margin:2rem;
+ 
+}
+.category-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.4);
+}
+
+
+.category-grid img:hover {
+  transform: scale(1.03);
+}
+
+.category-grid a {
+  display: block;
+}
+@media (max-width: 1240px) {
+  .category-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.section-description {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #555;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+  </style>
+</head>
+<body>
+  <h1>SiegSports ブログ一覧</h1>
+  <p class="section-description">SiegSportsの取り組みや陸上に関する知識を、ブログを通じて発信中！</p>
+
+  <div class="category-grid">
+    <a href="/blog?category=レビュー"><img src="/images/category1.png" alt="陸上用品レビュー"></a>
+    <a href="/blog?category=ノウハウ"><img src="/images/category2.png" alt="スプリントノウハウ"></a>
+    <a href="/blog?category=育つ力"><img src="/images/category3.png" alt="陸上で育つ力"></a>
+    <a href="/blog?category=陸上生活"><img src="/images/category4.png" alt="僕の陸上生活"></a>
+  </div>
+  
+  
+  <% if (selectedCategory) { %>
+    <h2 style="text-align: center;">「<%= selectedCategory %>」の記事一覧</h2>
+  <% } else { %>
+    <h2 style="text-align: center;">全てのブログ記事</h2>
+  <% } %>
+
+
+  <% if (blogs.length === 0) { %>
+    <p style="text-align: center;">記事がまだありません。</p>
+  <% } else { %>
+    <div class="blog-list">
+      <% blogs.forEach(blog => { %>
+        <div class="blog-card">
+          <a href="/blog/<%= blog.id %>">
+            <% if (blog.thumbnail_url) { %>
+              <img src="<%= blog.thumbnail_url %>" alt="thumbnail" style="width: 100%; border-radius: 8px;">
+            <% } %>
+            <h3><%= blog.title %></h3>
+          </a>
+          <p class="blog-date"><%= blog.created_at %></p>
+        </div>
+        
+      <% }); %> <!-- ✅ forEach 終了 -->
+    </div> <!-- ✅ blog-list 終了 -->
+  <% } %>
+</body>
+</html>

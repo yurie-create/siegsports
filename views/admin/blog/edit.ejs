@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ブログ編集</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      background-color: #f9f9f9;
+      margin: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 0.3rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.8rem 1.5rem;
+      background-color: #0073aa;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005f8d;
+    }
+
+    .preview {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #f4f4f4;
+      padding: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .preview h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>ブログ編集</h1>
+
+  <form action="/admin/blog/edit/<%= blog.id %>" method="POST">
+    <label>タイトル：</label><br>
+    <input type="text" name="title" id="title" value="<%= blog.title %>" required><br>
+
+    <label for="category">カテゴリー：</label><br>
+      <select name="category" id="category" required>
+        <option value="">選択してください</option>
+        <option value="レビュー" <%= blog.category === 'レビュー' ? 'selected' : '' %>>レビュー</option>
+        <option value="ノウハウ" <%= blog.category === 'ノウハウ' ? 'selected' : '' %>>ノウハウ</option>
+        <option value="育つ力" <%= blog.category === '育つ力' ? 'selected' : '' %>>育つ力</option>
+        <option value="陸上生活" <%= blog.category === '陸上生活' ? 'selected' : '' %>>陸上生活</option>
+      </select><br>
+
+
+    <label>本文：</label><br>
+    <textarea name="content" id="content" rows="8" required><%= blog.content %></textarea><br>
+
+    <button type="submit">更新する</button>
+  </form>
+
+  <div class="preview">
+    <h2 id="preview-title"><%= blog.title %></h2>
+    <div id="preview-content"><%- blog.content %></div>
+  </div>
+
+  <p style="text-align: center;"><a href="/admin/blog">← 一覧に戻る</a></p>
+
+  <script>
+    const titleInput = document.getElementById('title');
+    const contentInput = document.getElementById('content');
+    const previewTitle = document.getElementById('preview-title');
+    const previewContent = document.getElementById('preview-content');
+
+    titleInput.addEventListener('input', () => {
+      previewTitle.textContent = titleInput.value;
+    });
+
+    contentInput.addEventListener('input', () => {
+      previewContent.innerHTML = contentInput.value;
+    });
+  </script>
+</body>
+</html>

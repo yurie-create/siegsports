@@ -23,7 +23,7 @@
 </head>
 <body>
     <header class="site-header">
-        <div class="header-logo"><a href=index.html>
+        <div class="header-logo"><a href="/">
             <img src=images/sieqlogo.JPG class="logo-icon">
             SiegSports</a>
         </div>
@@ -44,6 +44,8 @@
                     <a href="#member">Member</a>
                 </li>
                 <li><a href="#news">News</a>
+                </li>
+                <li><a href="#blog">Blog</a>
                 </li>
                 <li>
                     <a href="#contact">Contact</a>
@@ -234,6 +236,28 @@
         </div>
       </section>
 
+
+      <section class="blog-section" id="blog" data-aos="fade-up">
+        <h2 class="section-title">BLOG</h2>
+        <p class="section-description">SiegSportsの取り組みや陸上に関する知識を、ブログを通じて発信中！</p>
+        <div class="blog-cards">
+          <% blogs.forEach(blog => { %>
+            <div class="blog-card">
+              <a href="/blog/<%= blog.id %>">
+                <img src="<%= blog.thumbnail_url %>" alt="<%= blog.title %>" class="blog-thumb">
+                <div class="blog-info">
+                  <h3><%= blog.title %></h3>
+                  <p class="blog-date"><%= blog.created_at.split('T')[0] %></p>
+                </div>
+              </a>
+            </div>
+          <% }); %>
+        </div>
+        <div class="blog-more">
+          <a href="/blog" class="btn">もっと見る</a>
+        </div>
+      </section>
+      
 
       <section class="socials" data-aos="fade-up">
         <h2 class="section-title">Follow Us</h2>

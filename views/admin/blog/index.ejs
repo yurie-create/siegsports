@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ブログ一覧</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      margin: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .blog-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .blog-card {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .blog-title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+
+
+    .blog-title:hover {
+        color:brown
+    }
+
+    .blog-content {
+      display: none;
+      margin-top: 0.5rem;
+      white-space: pre-wrap;
+    }
+
+    .blog-card.active .blog-content {
+      display: block;
+    }
+
+    .actions a {
+      margin-right: 1rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .actions a:hover {
+      text-decoration: underline;
+    }
+
+    .new-post {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>ブログ一覧</h1>
+ 
+  <% if (blogs.length === 0) { %>
+    <p style="text-align: center;">まだブログが投稿されていません。</p>
+  <% } else { %>
+    <div class="blog-list">
+      <% blogs.forEach(blog => { %>
+        <div class="blog-card">
+            <h3 class="blog-title">
+                <span class="toggle-icon">▶</span>
+                <%= blog.title %>
+              </h3>
+          <p><small><%= blog.created_at %></small></p>
+          <div class="blog-content"><%- blog.content %></div>
+          <div class="actions">
+            <a href="/admin/blog/edit/<%= blog.id %>">✏️ 編集</a>
+            <a href="/admin/blog/delete/<%= blog.id %>" onclick="return confirm('本当に削除しますか？')">🗑 削除</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <a class="new-post" href="/admin/blog/new">＋ 新規投稿</a>
+
+  <script>
+    document.querySelectorAll('.blog-title').forEach(title => {
+      title.addEventListener('click', () => {
+        const card = title.closest('.blog-card');
+        card.classList.toggle('active');
+        const icon = title.querySelector('.toggle-icon');
+      if (card.classList.contains('active')) {
+        icon.textContent = '▼';
+      } else {
+        icon.textContent = '▶';
+      }
+      });
+    });
+  </script>
+</body>
+</html>
