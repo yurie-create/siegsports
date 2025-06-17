@@ -198,7 +198,7 @@
         <div class="news-list">
           <% newsList.forEach(news => { %>
             <a href="/news/<%= news.id %>" class="news-item">
-              <div class="news-date"><%= news.date %></div>
+              <div class="news-date"><%= news.date.slice(0, 10) %></div>
               <div class="news-content"><%= news.title %></div>
             </a>
           <% }) %>

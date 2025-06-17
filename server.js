@@ -8,16 +8,7 @@ require('dotenv').config();
 
 const app = express();
 const pool = require('./db'); // PostgreSQL用の接続
-// ✅ DB接続テスト用エンドポイント
-app.get('/debug-db', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT NOW()');
-    res.send('✅ DB接続成功: ' + result.rows[0].now);
-  } catch (err) {
-    console.error('❌ DB接続エラー:', err);
-    res.status(500).send('DB接続失敗: ' + err.message);
-  }
-});
+
 
 const PORT = process.env.PORT || 3000;
 const path = require('path');
