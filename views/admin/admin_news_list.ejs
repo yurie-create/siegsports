@@ -9,7 +9,7 @@
   <ul>
     <% newsList.forEach(news => { %>
       <li>
-        <strong><%= news.date %></strong> - <%= news.title %>
+        <strong><div class="news-date"><%= news.date.toISOString().slice(0, 10) %></div></strong> - <%= news.title %>
         [<a href="/admin/news/edit/<%= news.id %>">編集</a>]
         [<a href="/admin/news/delete/<%= news.id %>" onclick="return confirm('削除しますか？')">削除</a>]
       </li>
