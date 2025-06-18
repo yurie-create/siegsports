@@ -249,18 +249,23 @@
         <h2 class="section-title">BLOG</h2>
         <p class="section-description">SiegSportsの取り組みや陸上に関する知識を、ブログを通じて発信中！</p>
         <div class="blog-cards">
-          <% blogs.forEach(blog => { %>
-            <div class="blog-card">
-              <a href="/blog/<%= blog.id %>">
-                <img src="<%= blog.thumbnail_url %>" alt="<%= blog.title %>" class="blog-thumb">
-                <div class="blog-info">
-                  <h3><%= blog.title %></h3>
-                  <p class="blog-date"><%= blog.created_at.split('T')[0] %></p>
-                </div>
-              </a>
-            </div>
-          <% }); %>
+          <% if (blogs && blogs.length > 0) { %>
+            <% blogs.forEach(blog => { %>
+              <div class="blog-card">
+                <a href="/blog/<%= blog.id %>">
+                  <img src="<%= blog.thumbnail_url || '/images/no-image.jpg' %>" alt="<%= blog.title %>" class="blog-thumb">
+                  <div class="blog-info">
+                    <h3><%= blog.title %></h3>
+                    <p class="blog-date"><%= blog.created_at ? blog.created_at.split('T')[0] : '' %></p>
+                  </div>
+                </a>
+              </div>
+            <% }); %>
+          <% } else { %>
+            <p>ブログ記事はまだありません。</p>
+          <% } %>
         </div>
+        
         <div class="blog-more">
           <a href="/blog" class="btn">もっと見る</a>
         </div>
