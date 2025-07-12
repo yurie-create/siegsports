@@ -16,6 +16,9 @@ const session = require('express-session');
 const adminUser = process.env.ADMIN_USER;
 const adminPass = process.env.ADMIN_PASS;
 const { requireAdmin } = require('./middleware/auth');
+const sitemapRouter = require('./routes/sitemap');
+
+
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'fallback_default_secret',
@@ -26,6 +29,7 @@ app.use(session({
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use('/', sitemapRouter);
 
 const adminBlogRoutes = require('./routes/adminBlog');
 app.use('/admin/blog', adminBlogRoutes);
