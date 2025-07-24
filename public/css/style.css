@@ -963,6 +963,16 @@ footer {
   color: #777;
 }
 
+footer a {
+  color: #666;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 .news-detail {
   max-width: 800px;
   margin: 4rem auto;
