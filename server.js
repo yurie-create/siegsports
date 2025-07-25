@@ -34,6 +34,14 @@ app.use('/', sitemapRouter);
 const adminBlogRoutes = require('./routes/adminBlog');
 app.use('/admin/blog', adminBlogRoutes);
 
+app.use((req, res, next) => {
+  if (req.headers.host === 'sieg-sports.com') {
+    return res.redirect(301, 'https://www.sieg-sports.com' + req.url);
+  }
+  next();
+});
+
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
