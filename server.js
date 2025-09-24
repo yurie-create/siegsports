@@ -49,26 +49,36 @@ app.post('/contact', async (req, res) => {
   const { name, email, message } = req.body;
   try {
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
+      host: 'smtp.gmail.com', port: 465, secure: true,
+      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
     });
 
     await transporter.sendMail({
-      from: email,
+      from: `"サイトお問い合わせ" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
+      replyTo: email,
       subject: `お問い合わせ: ${name}`,
-      text: message
+      text: `【お問い合わせ】
+
+■ お名前
+${name}
+
+■ メールアドレス
+${email}
+
+■ メッセージ
+${message}
+`
     });
 
-    res.redirect('/thanks.html');
-  } catch (error) {
-    console.error(error);
+    // ←← ここが重要：絶対URLで“あなたの”thanksへ返す
+    res.redirect(303, 'https://sieg-sports.com/thanks.html');
+  } catch (e) {
+    console.error('メール送信エラー:', e);
     res.status(500).send('送信失敗');
   }
 });
+
 
 
 app.get('/admin/news', requireAdmin, (req, res) => {

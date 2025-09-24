@@ -410,11 +410,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   
-document.querySelector("form").addEventListener("submit", function () {
-  const btn = document.getElementById("submitBtn");
-  btn.disabled = true;
-  btn.textContent = "送信中…";
-});
+  document.querySelector('.contact-form').addEventListener('submit', () => {
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = '送信中…';
+  });
+
+  // デバッグ：今のactionが本当にRailwayか確認
+  console.log('POST to:', document.querySelector('.contact-form').action);
 
 
 
