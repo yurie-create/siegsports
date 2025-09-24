@@ -47,6 +47,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.post('/contact', async (req, res) => {
   const { name, email, message } = req.body;
+
   try {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -57,10 +58,21 @@ app.post('/contact', async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: email,
-      to: process.env.EMAIL_USER,
+      from: `"サイトお問い合わせ" <${process.env.EMAIL_USER}>`, // 固定
+      to: process.env.EMAIL_USER, // 受信先
+      replyTo: email, // 返信するとユーザー宛に飛ぶ
       subject: `お問い合わせ: ${name}`,
-      text: message
+      text: `【お問い合わせ内容】
+
+■ お名前
+${name}
+
+■ メールアドレス
+${email}
+
+■ メッセージ
+${message}
+`
     });
 
     res.redirect('/thanks.html');
@@ -68,7 +80,8 @@ app.post('/contact', async (req, res) => {
     console.error(error);
     res.status(500).send('送信失敗');
   }
-});今これ
+});
+
 
 
 app.get('/admin/news', requireAdmin, (req, res) => {
