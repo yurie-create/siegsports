@@ -298,7 +298,7 @@
         <p>練習参加希望、入部希望等なんでもお気軽にお問い合わせください。</p>
       
         <div class="contact-wrapper" data-aos="fade-right" data-aos-duration="1000">
-          <form class="contact-form" action="https://siegsports-production.up.railway.app/contact" method="POST" data-aos="zoom-in" data-aos-delay="100">
+          <form class="contact-form" action="https://siegsports-production.up.railway.app/contact" method="POST" data-aos="zoom-in" data-aos-delay="100" novalidate>
             <!-- フォーム内容 -->
             <div class="form-group">
               <label for="name">お名前</label>
@@ -315,8 +315,13 @@
               <textarea id="message" name="message" rows="5" required placeholder="お問い合わせ内容を入力してください"></textarea>
             </div>
       
-            <button type="submit" class="submit-button" data-aos="zoom-out" data-aos-delay="200">送信</button>
-          </form>
+            <button id="submitBtn"
+            type="submit"
+            class="submit-button"
+            formaction="https://siegsports-production.up.railway.app/contact"
+            formmethod="POST"
+            data-aos="zoom-out" data-aos-delay="200">送信</button>
+  </form>
       
           <div class="line-contact" data-aos="fade-left" data-aos-duration="1500">
             <h3>LINEでのお問い合わせ</h3>
@@ -411,20 +416,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   
 
-document.querySelector('.contact-form').addEventListener('submit', () => {
-  const btn = document.querySelector('.submit-button');
-  if (btn) {
-    btn.disabled = true;
-    btn.textContent = '送信中…';
-  }
-});
-
-
-
-  // デバッグ：今のactionが本当にRailwayか確認
-  console.log('POST to:', document.querySelector('.contact-form').action);
-
-
+  document.querySelectorAll('form.contact-form').forEach(form => {
+    form.addEventListener('submit', () => {
+      const btn = form.querySelector('.submit-button');
+      if (btn) { btn.disabled = true; btn.textContent = '送信中…'; }
+      console.log('Submitting to:', (btn?.formAction || form.action));
+    });
+  });
 
       </script>
 </body>
