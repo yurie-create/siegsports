@@ -46,21 +46,49 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 
-app.post('/contact', async (req, res) => {
+app.post('/contact', (req, res) => {
   const { name, email, message } = req.body;
 
-  // ① まずはレスポンスだけ返してみる（テスト）
-  // ★ テスト：これを有効にして送信すると、必ずthanksに遷移するか？
-  // return res.redirect(303, 'https://sieg-sports.com/thanks.html');
+  // 先にリダイレクト（www付き！）
+  res.redirect(303, 'https://www.sieg-sports.com/thanks.html');
 
-  try {
-    // (以降はBで調整)
-  } catch (e) {
-    console.error('メール送信エラー:', e);
-    res.status(500).send('送信失敗');
-  }
+  // 送信は裏で実行（failしてもユーザーには影響なし）
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS // ← Gmailのアプリパスワード16桁
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 20000
+  });
+
+  transporter.sendMail({
+    from: `"サイトお問い合わせ" <${process.env.EMAIL_USER}>`,
+    to: process.env.EMAIL_USER,
+    replyTo: email,
+    subject: `お問い合わせ: ${name || ''}`,
+    text:
+`【お問い合わせ】
+
+■ お名前
+${name || ''}
+
+■ メールアドレス
+${email || ''}
+
+■ メッセージ
+${message || ''}
+`
+  }).then(info => {
+    console.log('Mail queued/sent:', info.messageId);
+  }).catch(err => {
+    console.error('メール送信エラー:', err);
+  });
 });
-
 
 
 
