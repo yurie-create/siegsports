@@ -211,6 +211,13 @@
       <section class="news-section" id="news" data-aos="fade-up">
         <h2 class="section-title">News / 試合結果</h2>
         <div class="news-list">
+          <!-- ★ 固定：陸上教室LP -->
+    <a href="https://sieg-sports-lp.vercel.app/" class="news-item news-lp">
+      <div class="news-date">NEW</div>
+      <div class="news-content">
+        【小学生向け】陸上教室 無料体験 募集中
+      </div>
+    </a>
           <% newsList.forEach(news => { %>
             <a href="/news/<%= news.id %>" class="news-item">
               <div class="news-date"><%= news.date.toISOString().slice(0, 10) %></div>
