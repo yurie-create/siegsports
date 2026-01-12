@@ -662,6 +662,20 @@ header {
       scroll-margin-top: 110px;
   }
  
+  .news-lp{
+    background:#111;
+    color:#fff;
+  }
+  
+  .news-lp .news-date{
+    font-weight:700;
+    color:#ffd700;
+  }
+  
+  .news-lp .news-content{
+    font-weight:700;
+  }
+  
   @media (max-width: 768px) {
     .news-section {
       padding: 40px 15px;
