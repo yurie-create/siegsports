@@ -663,13 +663,12 @@ header {
   }
  
   .news-lp{
-    background:#111;
-    color:#fff;
+    color:#f73c3c;
   }
   
   .news-lp .news-date{
     font-weight:700;
-    color:#ffd700;
+    color:#f81f1f;
   }
   
   .news-lp .news-content{
