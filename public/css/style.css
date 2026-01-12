@@ -475,8 +475,7 @@ header {
   
   .cta-sub{
     display:block;
-    font-size:14px;
-    opacity:.8;
+    font-size:18px;
   }
   
   .cta-main{
@@ -488,8 +487,7 @@ header {
   
   .cta-note{
     display:block;
-    font-size:13px;
-    opacity:.7;
+    font-size:18px;
   }
   
 
