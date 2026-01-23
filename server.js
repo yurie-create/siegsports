@@ -46,9 +46,10 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 
-import { Resend } from "resend";
-
+const { Resend } = require("resend");
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+
 
 app.post("/contact", async (req, res) => {
   const { name, email, message } = req.body;
