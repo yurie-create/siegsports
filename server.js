@@ -46,48 +46,44 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 
-app.post('/contact', (req, res) => {
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+app.post("/contact", async (req, res) => {
   const { name, email, message } = req.body;
 
-  // 先にリダイレクト（www付き！）
-  res.redirect(303, 'https://www.sieg-sports.com/thanks.html');
+  // UX優先：先にサンクスへ
+  res.redirect(303, "https://www.sieg-sports.com/thanks.html");
 
-  // 送信は裏で実行（failしてもユーザーには影響なし）
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS // ← Gmailのアプリパスワード16桁
-    },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 20000
-  });
-
-  transporter.sendMail({
-    from: `"サイトお問い合わせ" <${process.env.EMAIL_USER}>`,
-    to: process.env.EMAIL_USER,
-    replyTo: email,
-    subject: `お問い合わせ: ${name || ''}`,
-    text:
+  try {
+    const { data, error } = await resend.emails.send({
+      from: process.env.CONTACT_FROM,
+      to: [process.env.CONTACT_TO],
+      replyTo: email,
+      subject: `お問い合わせ: ${name || ""}`,
+      text:
 `【お問い合わせ】
 
 ■ お名前
-${name || ''}
+${name || ""}
 
 ■ メールアドレス
-${email || ''}
+${email || ""}
 
 ■ メッセージ
-${message || ''}
-`
-  }).then(info => {
-    console.log('Mail queued/sent:', info.messageId);
-  }).catch(err => {
-    console.error('メール送信エラー:', err);
-  });
+${message || ""}
+`,
+    });
+
+    if (error) {
+      console.error("Resend error:", error);
+    } else {
+      console.log("Resend sent:", data.id);
+    }
+  } catch (err) {
+    console.error("Resend exception:", err);
+  }
 });
 
 
