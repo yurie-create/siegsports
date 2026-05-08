@@ -220,6 +220,10 @@ app.get('/blog/:id', async (req, res) => {
   }
 });
 
+app.get('/about', (req, res) => {
+  res.render('about');
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
