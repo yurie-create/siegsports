@@ -3,24 +3,28 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://sieg-sports.com/</loc>
-    <lastmod>2025-05-28</lastmod>
+    <loc>https://www.sieg-sports.com/</loc>
+    <lastmod>2026-05-08</lastmod>
   </url>
 
   <url>
-    <loc>https://sieg-sports.com/news-detail.html</loc>
-    <lastmod>2025-05-28</lastmod>
-  </url>
-
-  <!-- 必要に応じてページを追加 -->
-
-  <url>
-    <loc>https://sieg-sports.com/thanks.html</loc>
-    <lastmod>2025-05-28</lastmod>
+    <loc>https://www.sieg-sports.com/blog</loc>
+    <lastmod>2026-05-08</lastmod>
   </url>
 
   <url>
-    <loc>https://sieg-sports.com/blog</loc>
-    <lastmod>2025-05-28</lastmod>
+    <loc>https://www.sieg-sports.com/about</loc>
+    <lastmod>2026-05-08</lastmod>
   </url>
+
+  <url>
+    <loc>https://www.sieg-sports.com/privacy.html</loc>
+    <lastmod>2026-05-08</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.sieg-sports.com/contact</loc>
+    <lastmod>2026-05-08</lastmod>
+  </url>
+
 </urlset>
