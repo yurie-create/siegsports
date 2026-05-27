@@ -35,12 +35,21 @@
   text-decoration: none;
 }
 
+/* A8広告バナーだけ既存img CSSをリセット */
 .affiliate-box img {
-  max-width: 100%;
-  height: auto;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+
+  display: inline-block !important;
+  object-fit: contain !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
     h1 {
       font-size: 2rem;
