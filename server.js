@@ -110,6 +110,9 @@ app.get('/', async (req, res) => {
     const blogResult = await pool.query('SELECT id, title, thumbnail_url, created_at FROM blogs ORDER BY created_at DESC LIMIT 3');
     res.render('index', { newsList: newsResult.rows, blogs: blogResult.rows });
   } catch (err) {
+    if (process.env.NODE_ENV !== 'production' && process.env.LOCAL_PREVIEW === '1') {
+      return res.render('index', { newsList: [], blogs: [] });
+    }
     res.status(500).send('データベースエラー');
   }
 });
