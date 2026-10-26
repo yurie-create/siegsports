@@ -3,99 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>運営者情報｜SiegSports</title>
-
-  <meta name="description" content="SiegSportsの運営者情報ページです。社会人陸上チームとしての活動やサイト運営方針について掲載しています。">
-
-  <style>
-    body {
-      margin: 0;
-      background: white;
-      color: #0f0f0f;
-      font-family: "Helvetica Neue", sans-serif;
-    }
-
-    .about-page {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 80px 20px;
-      line-height: 2;
-    }
-
-    .about-page h1 {
-      font-size: 42px;
-      margin-bottom: 50px;
-      text-align: center;
-      letter-spacing: 2px;
-    }
-
-    .about-page p {
-      font-size: 16px;
-      margin-bottom: 28px;
-      color:#0f0f0f;
-    }
-
-    .contact-link {
-      color: #4da3ff;
-      text-decoration: none;
-    }
-
-    .contact-link:hover {
-      text-decoration: underline;
-    }
-
-    @media screen and (max-width: 768px) {
-      .about-page {
-        padding: 60px 20px;
-      }
-
-      .about-page h1 {
-        font-size: 30px;
-        margin-bottom: 40px;
-      }
-
-      .about-page p {
-        font-size: 15px;
-        line-height: 1.9;
-      }
-    }
-  </style>
+  <title>SiegSportsについて | SiegSports公式サイト</title>
+  <meta name="description" content="関西を拠点に活動する社会人陸上競技チームSiegSportsのチーム紹介、活動理念、活動内容、運営者情報をご紹介します。">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/about.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-  <div class="about-page">
-
-    <h1>運営者情報</h1>
-
-    <p>
-      SiegSportsは、陸上競技を中心に活動する社会人スポーツチームです。
-    </p>
-
-    <p>
-      競技活動だけでなく、
-      スポーツの楽しさや挑戦する姿勢を発信することを目的として、
-      Webサイト・SNS・動画コンテンツ等を運営しています。
-    </p>
-
-    <p>
-      当サイトでは、
-      陸上競技・トレーニング・スポーツ生理学・チーム活動などに関する情報を発信しています。
-    </p>
-
-    <p>
-      「昨日の自分を超えていく」をテーマに、
-      挑戦することの価値や、努力による成長の楽しさを発信していきます。
-    </p>
-
-    <p>
-      お問い合わせにつきましては、
-      <a href="/#contact" class="contact-link">お問い合わせフォーム</a>
-      よりご連絡ください。
-    </p>
-
-  </div>
-
+  <%- include('partials/header', { homePrefix: '/' }) %>
+  <main class="team-about">
+    <div class="team-about-heading">
+      <p class="team-about-label" lang="en">ABOUT US</p>
+      <h1>SiegSportsについて</h1>
+    </div>
+    <section aria-labelledby="team-introduction">
+      <h2 id="team-introduction">チーム紹介</h2>
+      <p>SiegSportsは、関西を拠点に活動する社会人陸上競技チームです。</p>
+      <p>陸上競技に取り組む選手たちが集まり、それぞれの目標に向かって切磋琢磨しながら活動しています。</p>
+      <p>競技力の向上だけでなく、選手同士の交流や陸上競技の普及、競技経験を地域へ還元することも大切にしています。</p>
+    </section>
+    <section aria-labelledby="team-philosophy">
+      <h2 id="team-philosophy">活動理念</h2>
+      <p>SiegSportsでは、年齢や競技歴にかかわらず、一人ひとりが目標を持ち、挑戦し続けられる環境づくりを目指しています。</p>
+      <p>陸上競技を通じて仲間と高め合い、競技を続ける楽しさや、挑戦することの価値を伝えていきたいと考えています。</p>
+    </section>
+    <section aria-labelledby="team-activities">
+      <h2 id="team-activities">活動内容</h2>
+      <ul class="team-about-activities">
+        <li>社会人選手による陸上競技活動</li>
+        <li>各種陸上競技大会への参加</li>
+        <li>選手同士の技術交流・競技力向上</li>
+        <li>地域における陸上競技の普及活動</li>
+        <li>次世代選手の育成支援</li>
+      </ul>
+    </section>
+    <section aria-labelledby="team-management">
+      <h2 id="team-management">運営について</h2>
+      <p>SiegSportsは、陸上競技に情熱を持つ選手や関係者が協力しながら活動しています。</p>
+      <p>競技経験や知識を共有し、選手それぞれが競技に挑戦し続けられる環境づくりを大切にしています。</p>
+      <p>また、陸上競技を通した地域との交流や、スポーツの普及・発展につながる活動にも取り組んでいます。</p>
+    </section>
+    <section aria-labelledby="team-operator">
+      <h2 id="team-operator">運営者情報</h2>
+      <dl class="team-about-details">
+        <div><dt>チーム名</dt><dd>SiegSports（ジークスポーツ）</dd></div>
+        <div><dt>代表者（運営責任者）</dt><dd>山口 友李恵</dd></div>
+        <div><dt>活動拠点</dt><dd>大阪府を中心とした関西地域</dd></div>
+        <div><dt>連絡先</dt><dd><a href="mailto:sieg.sports.t.f@gmail.com">sieg.sports.t.f@gmail.com</a></dd></div>
+        <div><dt>活動内容</dt><dd>社会人陸上競技チームの運営、競技活動、地域スポーツ普及活動</dd></div>
+      </dl>
+    </section>
+    <section aria-labelledby="team-contact">
+      <h2 id="team-contact">お問い合わせ</h2>
+      <p>チームに関するお問い合わせは、公式のお問い合わせ窓口よりお願いいたします。</p>
+      <a class="team-about-contact" href="/#contact">お問い合わせ窓口へ <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+  <%- include('partials/footer') %>
+  <script>
+    const nav = document.getElementById('nav');
+    document.getElementById('hamburger').addEventListener('click', () => nav.classList.toggle('active'));
+    document.getElementById('closeNav').addEventListener('click', () => nav.classList.remove('active'));
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('active')));
+  </script>
 </body>
 </html>

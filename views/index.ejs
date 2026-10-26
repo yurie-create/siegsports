@@ -34,43 +34,7 @@
 
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-logo"><a href="/">
-            <img src=images/sieqlogo.webp class="logo-icon">
-            SiegSports</a>
-        </div>
-<!-- ハンバーガーアイコン -->
-<div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-        <nav class="header-list" id="nav">
-            <div class="close-btn" id="closeNav">✕</div>
-            <ul>
-              <li>
-      <a href="https://sieg-sports-lp.vercel.app/">陸上教室（無料体験）</a>
-    </li>
-                <li>
-                    <a href="#about">社会人チーム</a>
-                </li>
-                <li>
-                    <a href="#member">Member</a>
-                </li>
-                <li><a href="#news">News</a>
-                </li>
-                <li><a href="#blog">Blog</a>
-                </li>
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-            </ul>
-            </nav>
-
-               
-
-    </header>
+    <%- include('partials/header', { homePrefix: '' }) %>
     <main>
     <div class="top-wrapper">
         <div class="slideshow">
@@ -383,11 +347,7 @@
 
   
     </main>
-    <footer>
-    <small>(C)2025 SiegSports</small>
-    <br>
-  <a href="/privacy.html">プライバシーポリシー</a> <a href="/about">運営者情報</a>
-    </footer>
+    <%- include('partials/footer') %>
 
         <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
